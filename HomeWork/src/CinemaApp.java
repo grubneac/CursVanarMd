@@ -2,10 +2,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 public class CinemaApp{
     public static void main(String[] args){
-        // карта расположения сидений в кинозале
-        // -1 -> место занято
-        // 0  -> место свободно
-        // 1  -> место зарезервировано
+        // РєР°СЂС‚Р° СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ СЃРёРґРµРЅРёР№ РІ РєРёРЅРѕР·Р°Р»Рµ
+        // -1 -> РјРµСЃС‚Рѕ Р·Р°РЅСЏС‚Рѕ
+        // 0  -> РјРµСЃС‚Рѕ СЃРІРѕР±РѕРґРЅРѕ
+        // 1  -> РјРµСЃС‚Рѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРѕ
         int[][] room = {
                 {-1, 0, 0, 0, 0, 0, 0,-1 },
                 { 0, 0, 0, 1, 1, 1, 0, 0 },
@@ -13,7 +13,7 @@ public class CinemaApp{
                 { 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0 }
         };
-        // цены для каждого ряда в зале
+        // С†РµРЅС‹ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЂСЏРґР° РІ Р·Р°Р»Рµ
         int[]   price = {
                 100,
                 100,
@@ -27,46 +27,46 @@ public class CinemaApp{
         int row,col;
 
         do{
-            System.out.println("|ДО Покупки-----------------------------|");
+            System.out.println("|Р”Рћ РџРѕРєСѓРїРєРё-----------------------------|");
             PrintBiArr(room);
 
-            System.out.print("Ведите ряд:");
+            System.out.print("Р’РµРґРёС‚Рµ СЂСЏРґ:");
             try {
                 col = in.nextInt();
                 if (col<0 || col>room.length-1){
-                    System.out.println("ОШИБКА:Значение больше чем количество рядов");
+                    System.out.println("РћРЁРР‘РљРђ:Р—РЅР°С‡РµРЅРёРµ Р±РѕР»СЊС€Рµ С‡РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЂСЏРґРѕРІ");
                     continue;
                 }
             }catch (InputMismatchException e){
-                System.out.println("ОШИБКА: Не корректное значение");
+                System.out.println("РћРЁРР‘РљРђ: РќРµ РєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ");
                 in.next();
                 continue;
             }
-            System.out.print("Ведите место:");
+            System.out.print("Р’РµРґРёС‚Рµ РјРµСЃС‚Рѕ:");
             try {
                 row = in.nextInt();
                 if (row<0 || row >room[col].length-1){
-                    System.out.println("ОШИБКА:Значение больше чем количество мест");
+                    System.out.println("РћРЁРР‘РљРђ:Р—РЅР°С‡РµРЅРёРµ Р±РѕР»СЊС€Рµ С‡РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚");
                     continue;
                 }
             }catch (InputMismatchException e){
-                System.out.println("ОШИБКА: Не корректное значение");
+                System.out.println("РћРЁРР‘РљРђ: РќРµ РєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ");
                 in.next();
                 continue;
             }
 
             if (room[col][row]==0) {
-                System.out.println("Цена за билет: "+price[col]);
-                System.out.println("Будем брать?(Y)");
+                System.out.println("Р¦РµРЅР° Р·Р° Р±РёР»РµС‚: "+price[col]);
+                System.out.println("Р‘СѓРґРµРј Р±СЂР°С‚СЊ?(Y)");
                 bExit =in.next().toUpperCase();
                 if(!bExit.equals("Y"))break;
 
                  room[col][row] =1;
-                System.out.println("|ПОСЛЕ Покупки-------------------------|");
+                System.out.println("|РџРћРЎР›Р• РџРѕРєСѓРїРєРё-------------------------|");
                  PrintBiArr(room);
             }
 
-            System.out.print("Продолжим?(Y) ");
+            System.out.print("РџСЂРѕРґРѕР»Р¶РёРј?(Y) ");
             bExit = in.next().toUpperCase();
             if(!bExit.equals("Y"))break;
         }while (true);
@@ -82,7 +82,7 @@ public class CinemaApp{
             System.out.println("|");
         }
 
-        System.out.println("Свободных мест:"+counter);
+        System.out.println("РЎРІРѕР±РѕРґРЅС‹С… РјРµСЃС‚:"+counter);
 
     }
 }
