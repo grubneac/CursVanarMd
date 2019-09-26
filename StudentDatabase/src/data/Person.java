@@ -15,8 +15,7 @@ public class Person {
 	}
 
 	public void setAge(Float age) throws AgeOutOfRangeException {
-//		if (Validator.checkAge((int)age, minAge, maxAge)) //не хочет приводится???????
-		if (Validator.checkAge(Float.floatToIntBits(age), minAge, maxAge))
+		if (Validator.checkAge(age.intValue(), minAge, maxAge))
 			this.age = age;
 		else throw new AgeOutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
 	}
