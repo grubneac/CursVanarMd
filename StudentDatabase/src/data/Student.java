@@ -1,27 +1,22 @@
 package data;
 
-public class Student {
-	private String fulName;
-	private int age;
-	private Float mark;
+import exceptions.AgeOutOfRangeException;
+import exceptions.FullNameFormatException;
 
-	public Student(String fulName, int age, Float mark) {
-//		super();
-		this.fulName = fulName;
-		this.age = age;
+public class Student extends Person{
+	Group group;// - группа в которой студент учится ( валидация: не может быть null )
+	Float mark;// - средняя годовая оценка ( валидация: 1.0 .. 10.0 )
+
+	public Student(String fullname, Float age, Group group, Float mark) throws AgeOutOfRangeException, FullNameFormatException {
+		super(fullname, age);
+		this.group = group;
 		this.mark = mark;
 	}
-	public String getFulName() {
-		return fulName;
+	public Group getGroup() {
+		return group;
 	}
-	public void setFulName(String fulName) {
-		this.fulName = fulName;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 	public Float getMark() {
 		return mark;
@@ -31,7 +26,7 @@ public class Student {
 	}
 	@Override
 	public String toString() {
-		return "Student [fulName=" + fulName + ", age=" + age + ", mark=" + mark + "]";
+		return "Student [group=" + group + ", mark=" + mark + "]";
 	}
-
+	
 }
