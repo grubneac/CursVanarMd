@@ -17,7 +17,12 @@ public class Validator {
 	// - имя/фамилия ( валидация: min 5.. max 20 символов, обязательное присутствие 1 пробела не ближе чем 2 знака от каждого края)
 	public static boolean checkPersonName( String personName,int min,int max ) {
 		boolean result = false;
-		 //TODO реализовать проверку
+		if (personName.length()>=min 
+				&& personName.length()<=max
+				&& personName.indexOf(' ')>1 // в начале первых два знака не должны быть пробелами
+				&& personName.lastIndexOf(' ')<personName.length()-2 //последние два знака не должны быть пробелами
+				
+				)result = true;
 		return result;
 	}
 }
