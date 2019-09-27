@@ -36,4 +36,17 @@ public class Group {
 		return "Group [name=" + name + ", year=" + year + ", students=" + students + "]";
 	}
 	
+	public boolean addStudent(Student student) {
+		//TODO	нельзя добавлять null	
+		//TODO не допускать дублирования. Меняем на HashSet/ Переопределить equal and hashcode  в Student(имя и возраст)
+		//TODO при добавлении студента в группу, у студента прописываем группу
+		students.add(student);
+		return true;
+	}
+	public boolean removeStudent(Student student) {
+		//TODO при удаление студента из группы, у студента удаляем группу		
+		return students.remove(student);
+	}
+	
+	
 }
