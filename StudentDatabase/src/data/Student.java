@@ -9,7 +9,7 @@ public class Student extends Person{
 	Group group;// - группа в которой студент учится ( валидация: не может быть null )
 	Float mark;// - средняя годовая оценка ( валидация: 1.0 .. 10.0 )
 	static float minMark=1.0f;
-	static float maxMark=1.0f;
+	static float maxMark=10.0f;
 	public Student(String fullname, Float age, Group group, Float mark) throws AgeOutOfRangeException, FullNameFormatException, MarkException {
 		super(fullname, age);
 		this.group = group;

@@ -14,10 +14,10 @@ public class Aplication {
 		ArrayList<Student> students = new ArrayList<>();
 		
 		try {
-			students.add(new Student("dsjga", 25f, null, 5.5f));
+			students.add(new Student("dsjdsfsdf dfsdfga", 25f, null, 5.5f));
 		} catch (AgeOutOfRangeException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();e.getMessage();
 		} catch (FullNameFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
