@@ -20,9 +20,11 @@ public class Administrator extends Person {
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}
 
-	public Administrator(String fullname, Float age, Integer experience) throws AgeOutOfRangeException, FullNameFormatException {
+	public Administrator(String fullname, Float age, Integer experience) throws AgeOutOfRangeException, FullNameFormatException, ExperienceException {
 		super(fullname, age);
-		this.experience = experience;
+		if (Validator.checkAge(experience, minExperience, maxExperience))
+			this.experience = experience;
+		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}
 
 	@Override
