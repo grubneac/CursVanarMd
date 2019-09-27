@@ -25,4 +25,9 @@ public class Validator {
 				)result = true;
 		return result;
 	}
+
+	public static boolean checkMin(Integer experience, int minExperience) {
+		if (experience>=minExperience)return true;
+		return false;
+	}
 }

@@ -18,7 +18,9 @@ public class Teacher extends Person {
 		if (Validator.checkAge(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
-		this.domains = domains;
+		if (Validator.checkMin(domains.size(), minExperience))
+			this.domains = domains;
+		else throw new ExperienceException("кол-во направлений в которых он обучает:"+domains.size()+" ( валидация: min 1 .. )");
 	}
 	public Integer getExperience() {
 		return experience;
@@ -31,8 +33,10 @@ public class Teacher extends Person {
 	public ArrayList<Domains> getDomains() {
 		return domains;
 	}
-	public void setDomains(ArrayList<Domains> domains) {
-		this.domains = domains;
+	public void setDomains(ArrayList<Domains> domains) throws ExperienceException {
+		if (Validator.checkMin(domains.size(), minExperience))
+			this.domains = domains;
+		else throw new ExperienceException("кол-во направлений в которых он обучает:"+domains.size()+" ( валидация: min 1 .. )");
 	}
 	@Override
 	public String toString() {
