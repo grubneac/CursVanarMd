@@ -6,10 +6,10 @@ import helpers.Validator;
 public class Person {
 	String fullname;// - имя/фамилия ( валидация: min 5.. max 20 символов, обязательное присутствие 1 пробела не ближе чем 2 знака от каждого края)
 	Float age;// - возраст ( валидация: min 18 .. max 65 )
-	final int maxAge=18;
-	final int minAge=65;
-	final int maxFullNameLen=20;
-	final int minFullNameLen=5;
+	final private int maxAge=65;
+	final private int minAge=18;
+	final private int maxFullNameLen=20;
+	final private int minFullNameLen=5;
 	public Float getAge() {
 		return age;
 	}
