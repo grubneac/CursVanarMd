@@ -3,12 +3,28 @@ package main;
 import java.util.ArrayList;
 
 import data.Student;
+import exceptions.AgeOutOfRangeException;
+import exceptions.FullNameFormatException;
+import exceptions.MarkException;
 
 public class Aplication {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Student> students = new ArrayList<>();
+		
+		try {
+			students.add(new Student("dsjga", 25f, null, 5.5f));
+		} catch (AgeOutOfRangeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FullNameFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MarkException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 //		students.add(new Student("Вася Пекус", 21, 9.5f));
 //		students.add(new Student("Nana Pecus", 12, 5.5f));

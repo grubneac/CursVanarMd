@@ -30,4 +30,11 @@ public class Validator {
 		if (experience>=minExperience)return true;
 		return false;
 	}
+//средняя годовая оценка ( валидация: 1.0 .. 10.0 )
+	public static boolean checkMark( float mark,float min,float max ) {
+		if(mark>=min && mark<=max)return true;
+		return false;
+
+	}
+	
 }
