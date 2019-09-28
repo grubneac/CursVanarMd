@@ -1,6 +1,6 @@
 package data;
 
-import exceptions.AgeOutOfRangeException;
+import exceptions.OutOfRangeException;
 import exceptions.ExperienceException;
 import exceptions.FullNameFormatException;
 import helpers.Validator;
@@ -20,7 +20,7 @@ public class Administrator extends Person {
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}
 
-	public Administrator(String fullname, Float age, Integer experience) throws AgeOutOfRangeException, FullNameFormatException, ExperienceException {
+	public Administrator(String fullname, Float age, Integer experience) throws OutOfRangeException, FullNameFormatException, ExperienceException {
 		super(fullname, age);
 		if (Validator.checkAge(experience, minExperience, maxExperience))
 			this.experience = experience;

@@ -1,6 +1,6 @@
 package data;
 
-import exceptions.AgeOutOfRangeException;
+import exceptions.OutOfRangeException;
 import exceptions.FullNameFormatException;
 import exceptions.MarkException;
 import exceptions.NullException;
@@ -11,7 +11,7 @@ public class Student extends Person{
 	Float mark;// - средняя годовая оценка ( валидация: 1.0 .. 10.0 )
 	static float minMark=1.0f;
 	static float maxMark=10.0f;
-	public Student(String fullname, Float age, Group group, Float mark) throws AgeOutOfRangeException, FullNameFormatException, MarkException, NullException {
+	public Student(String fullname, Float age, Group group, Float mark) throws OutOfRangeException, FullNameFormatException, MarkException, NullException {
 		super(fullname, age);
 		if(Validator.isNotNull(group))
 			this.group = group;

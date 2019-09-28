@@ -3,9 +3,10 @@ package main;
 import java.util.ArrayList;
 
 import data.Student;
-import exceptions.AgeOutOfRangeException;
+import exceptions.OutOfRangeException;
 import exceptions.FullNameFormatException;
 import exceptions.MarkException;
+import exceptions.NullException;
 
 public class Aplication {
 
@@ -15,13 +16,16 @@ public class Aplication {
 		
 		try {
 			students.add(new Student("dsjdsfsdf dfsdfga", 25f, null, 5.5f));
-		} catch (AgeOutOfRangeException e) {
+		} catch (OutOfRangeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();e.getMessage();
 		} catch (FullNameFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (MarkException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NullException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
