@@ -3,6 +3,7 @@ package data;
 import exceptions.AgeOutOfRangeException;
 import exceptions.FullNameFormatException;
 import exceptions.MarkException;
+import exceptions.NullException;
 import helpers.Validator;
 
 public class Student extends Person{
@@ -10,9 +11,11 @@ public class Student extends Person{
 	Float mark;// - средняя годовая оценка ( валидация: 1.0 .. 10.0 )
 	static float minMark=1.0f;
 	static float maxMark=10.0f;
-	public Student(String fullname, Float age, Group group, Float mark) throws AgeOutOfRangeException, FullNameFormatException, MarkException {
+	public Student(String fullname, Float age, Group group, Float mark) throws AgeOutOfRangeException, FullNameFormatException, MarkException, NullException {
 		super(fullname, age);
-		this.group = group;
+		if(Validator.isNotNull(group))
+			this.group = group;
+		else throw new NullException("группа в которой студент учится ( валидация: не может быть null )");
 		if (Validator.checkMark(mark, minMark, maxMark))
 			this.mark = mark;
 		else throw new MarkException("средняя годовая оценка ="+mark+" ( валидация: "+minMark+" .. "+maxMark+" )");
@@ -20,8 +23,10 @@ public class Student extends Person{
 	public Group getGroup() {
 		return group;
 	}
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroup(Group group) throws NullException {
+		if(Validator.isNotNull(group))
+			this.group = group;
+		else throw new NullException("группа в которой студент учится ( валидация: не может быть null )");
 	}
 	public Float getMark() {
 		return mark;

@@ -1,5 +1,7 @@
 package helpers;
 
+import data.Group;
+
 public class Validator {
 	// - возраст ( валидация: min 18 .. max 65 )
 	public static boolean checkAge( int age,int min,int max ) {
@@ -26,6 +28,10 @@ public class Validator {
 	public static boolean checkMark( float mark,float min,float max ) {
 		return mark>=min && mark<=max;
 
+	}
+
+	public static boolean isNotNull(Object obj) {
+		return obj ==null;
 	}
 	
 }
