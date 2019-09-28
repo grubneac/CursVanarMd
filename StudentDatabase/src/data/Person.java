@@ -15,7 +15,7 @@ public class Person {
 	}
 
 	public void setAge(Float age) throws OutOfRangeException {
-		if (Validator.checkAge(age.intValue(), minAge, maxAge))
+		if (Validator.checkRange(age.intValue(), minAge, maxAge))
 			this.age = age;
 		else throw new OutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
 	}
@@ -35,7 +35,7 @@ public class Person {
 		if (Validator.checkPersonName(fullname, minFullNameLen, maxFullNameLen))
 			this.fullname = fullname;
 		else throw new FullNameFormatException("имя/фамилия не прошло валидацию: min "+minFullNameLen+".. max "+maxFullNameLen+" символов, обязательное присутствие 1 пробела не ближе чем 2 знака от каждого края)");
-		if (Validator.checkAge(age.intValue(), minAge, maxAge))
+		if (Validator.checkRange(age.intValue(), minAge, maxAge))
 			this.age = age;
 		else throw new OutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
 	}

@@ -15,14 +15,14 @@ public class Administrator extends Person {
 	}
 
 	public void setExperience(Integer experience) throws ExperienceException {
-		if (Validator.checkAge(experience, minExperience, maxExperience))
+		if (Validator.checkRange(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}
 
 	public Administrator(String fullname, Float age, Integer experience) throws OutOfRangeException, FullNameFormatException, ExperienceException {
 		super(fullname, age);
-		if (Validator.checkAge(experience, minExperience, maxExperience))
+		if (Validator.checkRange(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}

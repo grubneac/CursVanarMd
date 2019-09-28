@@ -15,7 +15,7 @@ public class Teacher extends Person {
 
 	public Teacher(String fullname, Float age, Integer experience, ArrayList<Domains> domains) throws OutOfRangeException, FullNameFormatException, ExperienceException {
 		super(fullname, age);
-		if (Validator.checkAge(experience, minExperience, maxExperience))
+		if (Validator.checkRange(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 		if (Validator.checkMin(domains.size(), minExperience))
@@ -26,7 +26,7 @@ public class Teacher extends Person {
 		return experience;
 	}
 	public void setExperience(Integer experience) throws ExperienceException {
-		if (Validator.checkAge(experience, minExperience, maxExperience))
+		if (Validator.checkRange(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}

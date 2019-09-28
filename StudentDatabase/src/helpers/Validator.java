@@ -4,7 +4,7 @@ import data.Group;
 
 public class Validator {
 	// - возраст ( валидация: min 18 .. max 65 )
-	public static boolean checkAge( int age,int min,int max ) {
+	public static boolean checkRange( int age,int min,int max ) {
 		return age>=min&&age<=max;
 	}
 	
