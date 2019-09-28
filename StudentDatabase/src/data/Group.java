@@ -2,6 +2,7 @@ package data;
 
 import java.util.ArrayList;
 
+import exceptions.NullException;
 import exceptions.OutOfRangeException;
 import helpers.Validator;
 
@@ -51,12 +52,15 @@ public class Group {
 		return "Group [name=" + name + ", year=" + year + ", students=" + students + "]";
 	}
 	
-	public boolean addStudent(Student student) {
-		//TODO	нельзя добавлять null	
-		//TODO не допускать дублирования. Меняем на HashSet/ Переопределить equal and hashcode  в Student(имя и возраст)
-		//TODO при добавлении студента в группу, у студента прописываем группу
-		students.add(student);
-		return true;
+	public boolean addStudent(Student student) throws NullException {
+		if(Validator.isNotNull(student)) {
+			//TODO не допускать дублирования. Меняем на HashSet/ Переопределить equal and hashcode  в Student(имя и возраст)
+			//TODO при добавлении студента в группу, у студента прописываем группу
+			students.add(student);
+			return true;
+			}
+		else throw new NullException("Нельзя добавлять null студента");
+			
 	}
 	public boolean removeStudent(Student student) {
 		//TODO при удаление студента из группы, у студента удаляем группу		
