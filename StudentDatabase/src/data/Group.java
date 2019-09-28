@@ -2,28 +2,43 @@ package data;
 
 import java.util.ArrayList;
 
+import exceptions.OutOfRangeException;
+import helpers.Validator;
+
 public class Group {
 	String name;// - имя группы ( валидация: min 5 .. max 30 )
 	Integer year;// - год / курс ( валидация: min 1 .. max 7 )
 	ArrayList<Student> students;// - ссылка на список студентов группы
-
-	public Group(String name, Integer year, ArrayList<Student> students) {
+	private final int minNameLength = 5;
+	private final int maxNameLength = 30;
+	private final int minYear = 1;
+	private final int maxYear = 7;
+	
+	public Group(String name, Integer year, ArrayList<Student> students) throws OutOfRangeException {
 		super();
-		this.name = name;
-		this.year = year;
+		if(Validator.checkRange(name.length(), minNameLength, maxNameLength))
+			this.name = name;
+		else throw new OutOfRangeException(" длинна имени группы:"+name.length()+" ( валидация: min "+minNameLength+" .. max "+maxNameLength+" )");
+		if(Validator.checkRange(year,minYear, maxYear))
+			this.year = year;
+		else throw new OutOfRangeException("год / курс:"+year+" ( валидация: min "+minYear+" .. max "+maxYear+" )");
 		this.students = students;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String name) throws OutOfRangeException {
+		if(Validator.checkRange(name.length(), minNameLength, maxNameLength))
+			this.name = name;
+		else throw new OutOfRangeException(" длинна имени группы:"+name.length()+" ( валидация: min "+minNameLength+" .. max "+maxNameLength+" )");
 	}
 	public Integer getYear() {
 		return year;
 	}
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setYear(Integer year) throws OutOfRangeException {
+		if(Validator.checkRange(year,minYear, maxYear))
+			this.year = year;
+		else throw new OutOfRangeException("год / курс:"+year+" ( валидация: min "+minYear+" .. max "+maxYear+" )");
 	}
 	public ArrayList<Student> getStudents() {
 		return students;
