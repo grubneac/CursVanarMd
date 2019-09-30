@@ -1,7 +1,9 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
+import data.Group;
 import data.Student;
 import exceptions.OutOfRangeException;
 import exceptions.FullNameFormatException;
@@ -14,7 +16,22 @@ public class Aplication {
 		ArrayList<Student> students = new ArrayList<>();
 		
 		try {
-			students.add(new Student("dsjdsfsdf dfsdfga", 25f, null, 5.5f));
+			
+			Student st1 = new Student("Вася Пекус", 25f, null, 5.5f);
+			Student st2 = new Student("Вася Пекус", 25f, null, 5.5f);
+			HashSet<Student> hashStudents = new HashSet<>();
+			
+			hashStudents.add(st1);
+			hashStudents.add(st2);
+			
+//			Group gr = new 
+			
+			
+			
+			students.add(st1);
+			students.add(st2);
+			
+			
 		} catch (OutOfRangeException e) {
 			e.printStackTrace();e.getMessage();
 		} catch (FullNameFormatException e) {
