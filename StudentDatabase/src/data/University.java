@@ -2,8 +2,13 @@ package data;
 
 import java.util.ArrayList;
 
+import exceptions.OutOfRangeException;
+import helpers.Validator;
+
 public class University {
 	String name;// - название университета ( валидация: min 3 .. max 30 )
+	private final int minNameLength = 3;
+	private final int maxNameLength = 30;
 	Administrator director;// - ссылка на объект класс директора
 	ArrayList<Group> groups;// - ссылка на список групп университета
 	ArrayList<Domains> domains;// - ссылка на список направлений обучения университета
@@ -11,9 +16,11 @@ public class University {
 	ArrayList<Student> students;// - ссылка на список студентов университета
 	
 	public University(String name, Administrator director, ArrayList<Group> groups, ArrayList<Domains> domains,
-			ArrayList<Teacher> teachers, ArrayList<Student> students) {
+			ArrayList<Teacher> teachers, ArrayList<Student> students) throws OutOfRangeException {
 		super();
-		this.name = name;
+		if(Validator.checkRange(name.length(), minNameLength, maxNameLength))
+			this.name = name;
+		else throw new OutOfRangeException("длинна название университета:"+name.length()+" ( валидация: min "+minNameLength+" .. max "+maxNameLength+" )");
 		this.director = director;
 		this.groups = groups;
 		this.domains = domains;
@@ -23,8 +30,10 @@ public class University {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String name) throws OutOfRangeException {
+		if(Validator.checkRange(name.length(), minNameLength, maxNameLength))
+			this.name = name;
+		else throw new OutOfRangeException("длинна название университета:"+name.length()+" ( валидация: min "+minNameLength+" .. max "+maxNameLength+" )");
 	}
 	public Administrator getDirector() {
 		return director;

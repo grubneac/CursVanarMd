@@ -2,7 +2,7 @@ package data;
 
 import java.util.ArrayList;
 
-import exceptions.AgeOutOfRangeException;
+import exceptions.OutOfRangeException;
 import exceptions.ExperienceException;
 import exceptions.FullNameFormatException;
 import helpers.Validator;
@@ -13,9 +13,9 @@ public class Teacher extends Person {
 	final int maxExperience=40;
 	final int minExperience=1;
 
-	public Teacher(String fullname, Float age, Integer experience, ArrayList<Domains> domains) throws AgeOutOfRangeException, FullNameFormatException, ExperienceException {
+	public Teacher(String fullname, Float age, Integer experience, ArrayList<Domains> domains) throws OutOfRangeException, FullNameFormatException, ExperienceException {
 		super(fullname, age);
-		if (Validator.checkAge(experience, minExperience, maxExperience))
+		if (Validator.checkRange(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 		if (Validator.checkMin(domains.size(), minExperience))
@@ -26,7 +26,7 @@ public class Teacher extends Person {
 		return experience;
 	}
 	public void setExperience(Integer experience) throws ExperienceException {
-		if (Validator.checkAge(experience, minExperience, maxExperience))
+		if (Validator.checkRange(experience, minExperience, maxExperience))
 			this.experience = experience;
 		else throw new ExperienceException("опыт в "+experience+" (не прошел валидацию: min "+minExperience+" .. max "+maxExperience+" )");
 	}

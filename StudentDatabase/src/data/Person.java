@@ -14,10 +14,10 @@ public class Person {
 		return age;
 	}
 
-	public void setAge(Float age) throws AgeOutOfRangeException {
-		if (Validator.checkAge(age.intValue(), minAge, maxAge))
+	public void setAge(Float age) throws OutOfRangeException {
+		if (Validator.checkRange(age.intValue(), minAge, maxAge))
 			this.age = age;
-		else throw new AgeOutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
+		else throw new OutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
 	}
 
 	public String getFullname() {
@@ -30,14 +30,14 @@ public class Person {
 		else throw new FullNameFormatException("имя/фамилия не прошло валидацию: min "+minFullNameLen+".. max "+maxFullNameLen+" символов, обязательное присутствие 1 пробела не ближе чем 2 знака от каждого края)");
 	}
 
-	public Person(String fullname, Float age) throws AgeOutOfRangeException, FullNameFormatException {
+	public Person(String fullname, Float age) throws OutOfRangeException, FullNameFormatException {
 		super();
 		if (Validator.checkPersonName(fullname, minFullNameLen, maxFullNameLen))
 			this.fullname = fullname;
 		else throw new FullNameFormatException("имя/фамилия не прошло валидацию: min "+minFullNameLen+".. max "+maxFullNameLen+" символов, обязательное присутствие 1 пробела не ближе чем 2 знака от каждого края)");
-		if (Validator.checkAge(Float.floatToIntBits(age), minAge, maxAge))
+		if (Validator.checkRange(age.intValue(), minAge, maxAge))
 			this.age = age;
-		else throw new AgeOutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
+		else throw new OutOfRangeException("возраст "+age+"(не проходит валидацию: min "+minAge+" .. max "+maxAge+" )");
 	}
 
 	@Override
