@@ -49,7 +49,7 @@ public class Group {
 	}
 	@Override
 	public String toString() {
-		return "Group [name=" + name + ", year=" + year + ", students=" + students + "]";
+		return "Group [name=" + name + ", year=" + year + "]";
 	}
 	
 	public boolean addStudent(Student student) throws NullException {
