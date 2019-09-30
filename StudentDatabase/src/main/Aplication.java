@@ -17,19 +17,24 @@ public class Aplication {
 		
 		try {
 			
-			Student st1 = new Student("Вася Пекус", 25f, null, 5.5f);
-			Student st2 = new Student("Вася Пекус", 25f, null, 5.5f);
+			Student st1 = new Student("Вася Пекус", 25f, new Group("Test Group", 1, new HashSet<Student>()), 5.8f);
+			Student st2 = new Student("Вася Пекус", 25f, new Group("Test Group", 1, new HashSet<Student>()), 5.5f);
 			HashSet<Student> hashStudents = new HashSet<>();
-			
-			if (hashStudents.add(st1))System.out.println("Студент:"+st1+" добавлен в группу");
-			else System.out.println("Студент:"+st1+" НЕ добавлен в группу");
-			if (hashStudents.add(st2))System.out.println("Студент:"+st2+" добавлен в группу");
-			else System.out.println("Студент:"+st2+" НЕ добавлен в группу");
-			
-//			Group gr = new 
+						
+			Group gr = new Group("First Group", 6, hashStudents); 
 			
 			if(st1.equals(st2))System.out.println("Оба объекта равны");
 			else System.out.println("Оба объекта НЕ равны");
+			
+			if(gr.addStudent(st1)) {
+				System.out.println("Добавлен в группу "+gr.getName());
+				System.out.println("Группа студента="+st1.getGroup());
+			}else System.out.println("Студент "+st1+" НЕ добавлен в группу "+gr.getName());
+
+			if(gr.addStudent(st2)) {
+				System.out.println("Добавлен в группу "+gr.getName());
+				System.out.println("Группа студента="+st2.getGroup());
+			}else System.out.println("Студент "+st2+" НЕ добавлен в группу "+gr.getName());
 			
 			students.add(st1);
 			students.add(st2);

@@ -31,7 +31,7 @@ public class Validator {
 	}
 
 	public static boolean isNotNull(Object obj) {
-		return obj ==null;
+		return obj != null;
 	}
 	
 }
