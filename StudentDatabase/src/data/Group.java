@@ -54,11 +54,13 @@ public class Group {
 	
 	public boolean addStudent(Student student) throws NullException {
 		if(Validator.isNotNull(student)) {
-			
-			students.add(student);
+			boolean result; 
+			result = students.add(student);
+			if (result){
 			//при добавлении студента в группу, у студента прописываем группу
 			student.setGroup(this);
-			return true;
+			}
+			return result;
 			}
 		else throw new NullException("Нельзя добавлять null студента");
 			

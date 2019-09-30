@@ -21,12 +21,15 @@ public class Aplication {
 			Student st2 = new Student("Вася Пекус", 25f, null, 5.5f);
 			HashSet<Student> hashStudents = new HashSet<>();
 			
-			hashStudents.add(st1);
-			hashStudents.add(st2);
+			if (hashStudents.add(st1))System.out.println("Студент:"+st1+" добавлен в группу");
+			else System.out.println("Студент:"+st1+" НЕ добавлен в группу");
+			if (hashStudents.add(st2))System.out.println("Студент:"+st2+" добавлен в группу");
+			else System.out.println("Студент:"+st2+" НЕ добавлен в группу");
 			
 //			Group gr = new 
 			
-			
+			if(st1.equals(st2))System.out.println("Оба объекта равны");
+			else System.out.println("Оба объекта НЕ равны");
 			
 			students.add(st1);
 			students.add(st2);
