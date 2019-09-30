@@ -62,8 +62,9 @@ public class Group {
 		else throw new NullException("Нельзя добавлять null студента");
 			
 	}
-	public boolean removeStudent(Student student) {
-		//TODO при удаление студента из группы, у студента удаляем группу		
+	public boolean removeStudent(Student student) throws NullException {
+		//TODO при удаление студента из группы, у студента удаляем группу
+		//student.setGroup(null);
 		return students.remove(student);
 	}
 	
