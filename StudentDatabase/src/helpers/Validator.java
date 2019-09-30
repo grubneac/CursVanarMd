@@ -1,6 +1,5 @@
 package helpers;
 
-import data.Group;
 
 public class Validator {
 	// - возраст ( валидация: min 18 .. max 65 )
