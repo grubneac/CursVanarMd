@@ -40,5 +40,18 @@ public class Student extends Person{
 	public String toString() {
 		return "Student [group=" + group + ", mark=" + mark + "]";
 	}
+	public void removeGroup() {
+		this.group=null;
+		
+	}
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+	
 	
 }
