@@ -31,7 +31,7 @@ public class TestApplication {
 ////		-------------------------------------------------------------------------------
 		HashSet<String> codVal = new HashSet<>(Arrays.asList("MDA","LUX","EUR"));
 		HashMap<String, Float> hashMap2= coinRateProvider.getLiveRates(codVal);
-		System.out.println("function getLiveRates2 return:");
+		System.out.println("function getLiveRates by valuta "+codVal+" return:");
 		for (Map.Entry<String, Float> pair	: hashMap2.entrySet()) {
 			System.out.println(pair.getKey()+" : "+String.format("%.7f", pair.getValue()));
 		}
@@ -39,7 +39,7 @@ public class TestApplication {
 //		SimpleDateFormat df= new SimpleDateFormat("dd.mm.yyyy");
 //		Date dat = df.parse("15.05.2019");
 //		HashMap<String, Float> hashMap3= coinRateProvider.getHistoricalRates(dat);
-//		System.out.println("function getLiveRates3 return:");
+//		System.out.println("function getHistoricalRates return:");
 //		for (Map.Entry<String, Float> pair	: hashMap3.entrySet()) {
 //			System.out.println(pair.getKey()+" : "+String.format("%.7f", pair.getValue()));
 //		}
@@ -47,7 +47,7 @@ public class TestApplication {
 		SimpleDateFormat df= new SimpleDateFormat("dd.mm.yyyy");
 		Date dat = df.parse("15.05.2019");
 		HashMap<String, Float> hashMap3= coinRateProvider.getHistoricalRates(codVal, dat);
-		System.out.println("function getLiveRates4 return:");
+		System.out.println("function getHistoricalRates("+df.format(dat)+") by valuta "+codVal+"  return:");
 		for (Map.Entry<String, Float> pair	: hashMap3.entrySet()) {
 			System.out.println(pair.getKey()+" : "+String.format("%.7f", pair.getValue()));
 		}
