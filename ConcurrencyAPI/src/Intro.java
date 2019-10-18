@@ -16,7 +16,7 @@ public class Intro {
 class Incrementals implements Runnable {
 	private static volatile int counter = 0;
 	private String name;
-	private static final Object monitor = new Object();
+//	private static Object monitor = new Object();
 	
 	public Incrementals(String name) {
 		super();
@@ -31,9 +31,12 @@ class Incrementals implements Runnable {
 		System.out.println(name+" : "+counter);
 	}
 	
-	private void increment() {
-		synchronized (monitor) {
+//	private void increment() {
+//		synchronized (monitor) {
+//			counter++;
+//		}
+//	}
+	private synchronized void increment() {
 			counter++;
-		}
 	}
 }
