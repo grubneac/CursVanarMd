@@ -20,14 +20,16 @@ public class BreadProvider extends Thread{
 	@Override
 	public void run() {
 		while(true) {
-			if(breads.size()<10) {
-				produceOneBread();
-			}
-			try {
-				sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			synchronized(this) {
+				if(breads.size()<10) {
+					produceOneBread();
+				}else {
+					try {
+						this.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 	}
@@ -39,12 +41,13 @@ public class BreadProvider extends Thread{
 	}
 	
 	public synchronized Bread sellOneBread() {
+		Bread for_sale =null;
 		if( breads.size() > 0 ) {
 			breads_sold++;
-			return breads.remove(0); // sell starting with the oldest
-		} else {
-			return null; // nothing to sell yet
-		}
+			for_sale = breads.remove(0); // sell starting with the oldest
+		} 
+		if (breads.size()<3)notify();
+		return for_sale;
 	}
 
 
