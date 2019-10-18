@@ -5,7 +5,7 @@ public class IntroFromYouTube {
 		new IntroFromYouTube().doCounter();
 	}
 	
-	private volatile int count = 0;
+	private int count = 0;
 	
 	private synchronized void increment() {
 		count++;
