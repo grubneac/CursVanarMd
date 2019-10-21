@@ -27,12 +27,9 @@ public class ApplicationTest {
 		Boolean method_exists =  methods
                 .stream()
                 .anyMatch(method -> {
-                    if (method.getName().equals("anotherMethod")
-                		&& method.getReturnType().toString().equals("boolean")) {
-                    	Parameter[] parameters = method.getParameters();
-                    	return parameters[0].getParameterizedType().getTypeName().equals("java.lang.String");
-                    }
-                    else return false;
+                    return method.getName().equals("anotherMethod")
+                		&& method.getReturnType().toString().equals("boolean") 
+                    	&& method.getParameters()[0].getParameterizedType().getTypeName().equals("java.lang.String");
                 });
 		
 		assertTrue("Class \"Application\" is method anotherMethod not complete!", method_exists);
