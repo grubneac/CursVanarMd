@@ -51,8 +51,8 @@ public class StudentRepository {
 			String execSQL = "INSERT INTO students VALUES(null, '"+student.getFullName()
 														+"','"+simpleDateFormat.format(student.getDob())
 														+"', "+student.getMark()+");";
-			System.out.println(execSQL);
-			st.executeUpdate("execSQL");
+//			System.out.println(execSQL);
+			st.executeUpdate(execSQL);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,7 +72,7 @@ public class StudentRepository {
 
 */				
 				try {
-					students.add(new Student(rs.getString("fulName"), 
+					students.add(new Student(rs.getString("fullname"), 
 											simpleDateFormat.parse(rs.getString("dob")) , 
 											Float.valueOf(rs.getString("mark"))));
 				} catch (NumberFormatException e) {
