@@ -1,0 +1,28 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-16df209ac4d-4d569dbe4a941771": {
+			"provider": "generic",
+			"driver": "sqlite_jdbc",
+			"name": "SQLite - university.db",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"database": "C:\\Users\\grubnyak\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
+				"url": "jdbc:sqlite:C:\\Users\\grubnyak\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
+				"type": "dev",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Разработка",
+			"color": "255,255,255",
+			"description": "База данных для разработки",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
