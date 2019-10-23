@@ -14,7 +14,7 @@ import data.Student;
 public class StudentRepository {
 	private Connection connection;
 	private String database_url ="jdbc:sqlite:university.db";
-	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+	public SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
 	
 	public StudentRepository()  {
 			try {
