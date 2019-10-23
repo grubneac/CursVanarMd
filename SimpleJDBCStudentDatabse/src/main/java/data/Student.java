@@ -10,6 +10,7 @@ public class Student {
 	private String fullName;
 	private Date dob;
 	private Float mark;
+	private Integer id;
 	
 
 	public Student() {
@@ -28,7 +29,15 @@ public class Student {
 		this.dob = dob;
 		this.mark = mark;
 	}
+	
 
+	public Student(Integer id, String fullName, Date dob, Float mark) {
+		super();
+		this.fullName = fullName;
+		this.dob = dob;
+		this.mark = mark;
+		this.id = id;
+	}
 
 	public String getFullName() {
 		return fullName;
@@ -61,6 +70,22 @@ public class Student {
 
 	public void setMark(Float mark) {
 		this.mark = mark;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%-3s",this.getId()) +"| "+
+				String.format("%-30s",this.getFullName())+" |"+ 
+				this.getAge()+" | "+ 
+				this.getMark();
 	}
 
 

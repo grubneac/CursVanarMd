@@ -59,6 +59,34 @@ public class StudentRepository {
 			return false;
 		}
 	}
+
+	public boolean updateStudent(Student student) {
+		try {
+			Statement st = connection.createStatement();
+			String execSQL = "UPDATE students SET fullname ='"+student.getFullName()
+														+"',dob='"+simpleDateFormat.format(student.getDob())
+														+"', mark="+student.getMark()
+														+"  WHERE id="+student.getId()+";";
+//			System.out.println(execSQL);
+			st.executeUpdate(execSQL);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean deleteStudent(Student student) {
+		try {
+			Statement st = connection.createStatement();
+			String execSQL = "DELETE from students WHERE id="+student.getId()+";";
+//			System.out.println(execSQL);
+			st.executeUpdate(execSQL);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	public ArrayList<Student> all() {
 		ArrayList<Student> students = new ArrayList<>();
@@ -72,7 +100,8 @@ public class StudentRepository {
 
 */				
 				try {
-					students.add(new Student(rs.getString("fullname"), 
+					students.add(new Student(rs.getInt("id"),
+											rs.getString("fullname"), 
 											simpleDateFormat.parse(rs.getString("dob")) , 
 											Float.valueOf(rs.getString("mark"))));
 				} catch (NumberFormatException e) {
