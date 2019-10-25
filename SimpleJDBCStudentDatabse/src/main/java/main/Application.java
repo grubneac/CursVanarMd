@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import data.Group;
 import data.Student;
 
 public class Application {
@@ -27,7 +28,7 @@ public class Application {
 		
 		//SWing - GUI
 		//JAVAFX
-		JFrame window = new JFrame("Student JDBC Example");
+/*		JFrame window = new JFrame("Student JDBC Example");
 			window.setBounds(100, 100, 200, 150);
 			window.getContentPane().setLayout(new GridLayout(5,1));
 		
@@ -92,7 +93,7 @@ public class Application {
 			
 			
 		window.show();
-		
+*/		
 		//		Connect to SQLite
 /*		StudentRepository studentRepository = new StudentRepository();
 		
@@ -134,5 +135,43 @@ public class Application {
 			e.printStackTrace();
 		}
 		*/
+		GroupRepository groupRepository = new GroupRepository();
+		
+		//		Create table Groups
+		groupRepository.install();
+		
+		//		create object Group
+		System.out.println("-------add 10 groups");
+		ArrayList<Group> groups = new GroupProvider().provideManyGroups(10);
+			
+		//		Insert obj Group to to table Groups
+		for (Group group : groups) {
+			groupRepository.addGroup(group);
+		}
+		groups = groupRepository.all();
+		for (Group group : groups) System.out.println(group);
+
+		
+		System.out.println("-------DELETE first group");
+		Group groupForDelete = new Group(1,null,null);
+		groupRepository.deleteGroup(groupForDelete);
+		groups = groupRepository.all();
+		for (Group group : groups) System.out.println(group);
+			
+		System.out.println("-------UPDATE all groups. Put code+'_' ");
+		for (Group group : groups) {
+			
+				group.setCode(group.getCode()+"_");
+				groupRepository.updateGroup(group);
+		}
+		groups = groupRepository.all();
+		for (Group group : groups) System.out.println(group);
+			
+		//close connection
+		try {
+			groupRepository.finalize();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 	}
 }
