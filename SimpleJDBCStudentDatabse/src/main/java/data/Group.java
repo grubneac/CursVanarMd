@@ -1,12 +1,17 @@
 package data;
 
-public class Group {
+public class Group implements Cloneable{
 	private Integer id;
 	private String name;
 	private String code;
 
 	public Group(){
 		
+	}
+	public Group(String name, String code) {
+		super();
+		this.name = name;
+		this.code = code;
 	}
 	public Group(Integer id, String name, String code) {
 		super();
@@ -66,6 +71,9 @@ public class Group {
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public Group clone() throws CloneNotSupportedException {
+		return (Group)super.clone();
+	}
 }
