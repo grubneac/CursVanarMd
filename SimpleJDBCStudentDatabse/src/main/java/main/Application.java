@@ -134,7 +134,7 @@ public class Application {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		GroupRepository groupRepository = new GroupRepository();
 		
 		//		Create table Groups
@@ -172,6 +172,6 @@ public class Application {
 			groupRepository.finalize();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}	*/	
 	}
 }

@@ -25,7 +25,8 @@ public class StudentRepository extends Repository{
 					"    id INTEGER PRIMARY KEY AUTOINCREMENT, \r\n" + 
 					"     fullname VARCHAR(30),\r\n" + 
 					"     dob DATE,\r\n" + 
-					"     mark DECIMAL(6,2)\r\n" + 
+					"     mark DECIMAL(6,2),\r\n" + 
+					"	  group_id INT"+
 					" );");
 			return true;
 		} catch (SQLException e) {

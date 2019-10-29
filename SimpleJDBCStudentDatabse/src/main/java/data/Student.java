@@ -11,15 +11,17 @@ public class Student implements Cloneable {
 	private Date dob;
 	private Float mark;
 	private Integer id;
-	
+	private Group group;
 
 	public Student() {
 		super();
+		this.group =null;
 	}
 
 	public Student(String fullName) {
 		super();
 		this.fullName = fullName;
+		this.group =null;
 	}
 	
 
@@ -28,6 +30,7 @@ public class Student implements Cloneable {
 		this.fullName = fullName;
 		this.dob = dob;
 		this.mark = mark;
+		this.group =null;
 	}
 	
 
@@ -37,6 +40,7 @@ public class Student implements Cloneable {
 		this.dob = dob;
 		this.mark = mark;
 		this.id = id;
+		this.group =null;
 	}
 
 	public String getFullName() {
@@ -78,6 +82,14 @@ public class Student implements Cloneable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 
 	@Override

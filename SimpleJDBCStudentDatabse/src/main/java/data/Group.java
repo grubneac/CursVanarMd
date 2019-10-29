@@ -1,23 +1,28 @@
 package data;
 
+import java.util.ArrayList;
+
 public class Group implements Cloneable{
 	private Integer id;
 	private String name;
 	private String code;
+	private ArrayList students;
 
 	public Group(){
-		
+		students = new ArrayList<>();
 	}
 	public Group(String name, String code) {
 		super();
 		this.name = name;
 		this.code = code;
+		students = new ArrayList<>();
 	}
 	public Group(Integer id, String name, String code) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.code = code;
+		students = new ArrayList<>();
 	}
 
 	public Integer getId() {
@@ -44,6 +49,12 @@ public class Group implements Cloneable{
 		this.code = code;
 	}
 
+	public ArrayList getStudents() {
+		return students;
+	}
+	public void setStudents(ArrayList students) {
+		this.students = students;
+	}
 	@Override
 	public String toString() {
 		return "Group [id=" + id + ", name=" + name + ", code=" + code + "]";
