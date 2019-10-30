@@ -8,10 +8,12 @@
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
-				"database": "C:\\Users\\grubnyak\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
-				"url": "jdbc:sqlite:C:\\Users\\grubnyak\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
-				"type": "dev",
-				"handlers": {}
+				"database": "C:\\Users\\SASHA\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
+				"url": "jdbc:sqlite:C:\\Users\\SASHA\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
+				"type": "dev"
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},
