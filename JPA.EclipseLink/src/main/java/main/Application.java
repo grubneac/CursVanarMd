@@ -16,14 +16,14 @@ public class Application {
 		
 		Student student = new Student(11L, "John Doe");
 		Student returnStudent = findOneStudent(student.getId());
-		if (returnStudent ==null) createStudent(student);
+		if (returnStudent ==null) addOneStudent(student);
 		else updateStudent(student);
 		
 		System.out.println(returnStudent);
 		
 		student = new Student(12L, "Vasea Pecus");
 		returnStudent = findOneStudent(student.getId());
-		if (returnStudent == null) createStudent(student);
+		if (returnStudent == null) addOneStudent(student);
 		else updateStudent(student);
 		System.out.println(returnStudent);
 	}
@@ -57,7 +57,7 @@ public class Application {
 	       em.getTransaction().commit();
 	       return s;
 	   }
-	 public static void createStudent(Student student) {
+	 public static void addOneStudent(Student student) {
 	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
 	       EntityManager em = factory.createEntityManager();
 	       
