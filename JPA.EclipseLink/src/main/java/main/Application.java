@@ -23,6 +23,7 @@ public class Application {
 		
 		student = new Student(12L, "Vasea Pecus");
 		returnStudent = findOneStudent(student.getId());
+		
 		if (returnStudent == null) addOneStudent(student);
 		else updateStudent(student);
 		System.out.println(returnStudent);
