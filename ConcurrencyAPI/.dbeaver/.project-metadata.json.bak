@@ -1,1 +1,1 @@
-{"resources":{"Scripts/Script.sql":{"sql-editor-data-source-id":"sqlite_jdbc-16df209ac4d-4d569dbe4a941771"}}}
+{"resources":{"Scripts/Script-1.sql":{"sql-editor-data-source-id":"postgres-jdbc-16e1dd68e23-3b70fedf72156734"},"Scripts/Script.sql":{"sql-editor-data-source-id":"sqlite_jdbc-16df209ac4d-4d569dbe4a941771"}}}

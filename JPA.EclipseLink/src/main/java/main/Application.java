@@ -11,43 +11,66 @@ public class Application {
 
 	public static void main(String[] args) {
 //		ArrayList<Student> students = new ArrayList<Student>();
+		uninstall();
 		install();// create table
 		
-		Student student = new Student(11L, "John Doe");
-		Student returnStudent = findOneStudent(student.getId());
-		if (returnStudent ==null) addOneStudent(student);
-		else updateStudent(student);
-		
-		System.out.println(returnStudent);
-		
-		student = new Student(12L, "Vasea Pecus");
-		returnStudent = findOneStudent(student.getId());
-		
-		if (returnStudent == null) addOneStudent(student);
-		else updateStudent(student);
-		System.out.println(returnStudent);
+//		Student student = new Student(11L, "John Doe");
+//		Student returnStudent = findOneStudent(student.getId());
+//		if (returnStudent ==null) addOneStudent(student);
+//		else updateStudent(student);
+//		
+//		System.out.println(returnStudent);
+//		
+//		student = new Student(12L, "Vasea Pecus");
+//		returnStudent = findOneStudent(student.getId());
+//		
+//		if (returnStudent == null) addOneStudent(student);
+//		else updateStudent(student);
+//		System.out.println(returnStudent);
 	}
 	
 	public static void check(){
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("sqlite-database");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
 		em.close();
 	}
 	 public static void install() {
-	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
+	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
 	       EntityManager em = factory.createEntityManager();
 	       
 	       em.getTransaction().begin();
 
 	       em
-	         .createNativeQuery("Create table if not exists Student(id INTEGER PRIMARY KEY, fullName VARCHAR(30));")
+	         .createNativeQuery("CREATE TABLE public.students (\r\n" + 
+	         		"	id serial NOT NULL,\r\n" + 
+	         		"	fullname varchar(30) NULL,\r\n" + 
+	         		"	dob date NULL,\r\n" + 
+	         		"	mark numeric NULL,\r\n" + 
+	         		"	CONSTRAINT students_pkey PRIMARY KEY (id)\r\n" + 
+	         		");\r\n" + 
+	         		";")
 	         .executeUpdate();
 
 	       em.getTransaction().commit();
-	       
 	   }
+	 
+	 public static void uninstall() {
+	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
+	       EntityManager em = factory.createEntityManager();
+	       
+	       em.getTransaction().begin();
+
+	       em
+	         .createNativeQuery("DROP TABLE if exists public.students ;")
+	         .executeUpdate();
+
+	       em.getTransaction().commit();
+	   }
+	 
+	 
+	 
 	 public static Student findOneStudent(Long id) {
-	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
+	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
 	       EntityManager em = factory.createEntityManager();
 	       
 	       em.getTransaction().begin();
@@ -58,7 +81,7 @@ public class Application {
 	       return s;
 	   }
 	 public static void addOneStudent(Student student) {
-	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
+	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
 	       EntityManager em = factory.createEntityManager();
 	       
 	       em.getTransaction().begin();
@@ -67,7 +90,7 @@ public class Application {
 	      
 	   }
 	 public static void updateStudent(Student student) {
-	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("sqlite-database");
+	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
 	       EntityManager em = factory.createEntityManager();
 	       
 	       em.getTransaction().begin();
