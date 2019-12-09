@@ -2,36 +2,57 @@ package entities;
 
 import java.sql.Date;
 
-import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 
 @Entity
-@Table(name ="Student")
+@Table(name ="student")
 public class Student {
 	
 	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
 	private Long Id;
+	
+	@Column(name = "full_name")
+	@NotNull
+	@Length(min=5, max=30)
 	private String fullName;
+	
 	private Date dob;
+	
+	@NotNull
+	@Min(0)
+	@Max(10)
 	private Float mark;
+	
+	@ManyToOne
+	@JoinColumn(name="group_id")
+	Group group;
 	
 	public Student() {
 		super();
 	}
-	
 
 
-	public Student(Long id, String fullName, Date dob, Float mark) {
+
+
+
+	public Student(Long id, @NotNull @Length(min = 5, max = 30) String fullName, Date dob,
+			@NotNull @Min(0) @Max(10) Float mark, Group group) {
 		super();
 		Id = id;
 		this.fullName = fullName;
 		this.dob = dob;
 		this.mark = mark;
+		this.group = group;
 	}
+
+
 
 
 
@@ -63,10 +84,25 @@ public class Student {
 	public void setMark(Float mark) {
 		this.mark = mark;
 	}
+	
+
+	public Group getGroup() {
+		return group;
+	}
+
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Student [Id=" + Id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + "]";
+		return "Student [Id=" + Id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", group=" + group
+				+ "]";
 	}
+
+
+	
 
 }

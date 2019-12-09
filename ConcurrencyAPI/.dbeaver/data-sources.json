@@ -1,21 +1,6 @@
 {
 	"folders": {},
 	"connections": {
-		"sqlite_jdbc-16df209ac4d-4d569dbe4a941771": {
-			"provider": "generic",
-			"driver": "sqlite_jdbc",
-			"name": "SQLite - university.db",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"database": "C:\\Users\\SASHA\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
-				"url": "jdbc:sqlite:C:\\Users\\SASHA\\git\\CursVanarMd\\SimpleJDBCStudentDatabse\\university.db",
-				"type": "dev"
-			},
-			"custom-properties": {
-				"database.meta.separate.connection": "false"
-			}
-		},
 		"postgres-jdbc-16e1dd68e23-3b70fedf72156734": {
 			"provider": "postgresql",
 			"driver": "postgres-jdbc",
@@ -28,11 +13,18 @@
 				"database": "university_app",
 				"url": "jdbc:postgresql://localhost:5432/university_app",
 				"type": "dev",
+				"properties": {
+					"connectTimeout": "20",
+					"loginTimeout": "20"
+				},
 				"provider-properties": {
-					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-non-default-db@": "true",
 					"@dbeaver-show-template-db@": "false"
 				},
 				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},

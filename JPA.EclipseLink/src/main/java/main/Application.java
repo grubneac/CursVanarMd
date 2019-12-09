@@ -4,15 +4,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import entities.Student;
 
 public class Application {
 
 	public static void main(String[] args) {
+		check();
 //		ArrayList<Student> students = new ArrayList<Student>();
-		uninstall();
-		install();// create table
+//		uninstall();
+//		install();// create table
 		
 //		Student student = new Student(11L, "John Doe");
 //		Student returnStudent = findOneStudent(student.getId());
@@ -32,6 +36,9 @@ public class Application {
 	public static void check(){
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		
+		em.getTransaction().commit();
 		em.close();
 	}
 	 public static void install() {
