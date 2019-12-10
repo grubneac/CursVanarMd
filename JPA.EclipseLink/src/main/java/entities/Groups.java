@@ -8,8 +8,8 @@ import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name ="group")
-public class Group {
+@Table(name ="groups")
+public class Groups {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
@@ -23,14 +23,14 @@ public class Group {
 	@JoinColumn(name="faculty_id")
 	private Faculty faculty; 
 	
-	@OneToMany(mappedBy="group")
+	@OneToMany(mappedBy="groups")
 	private List<Student> students;
 
-	public Group() {
+	public Groups() {
 		super();
 	}
 
-	public Group(Long id, @NotNull @Length(min = 2, max = 10) String name, Faculty faculty, List<Student> students) {
+	public Groups(Long id, @NotNull @Length(min = 2, max = 10) String name, Faculty faculty, List<Student> students) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -72,7 +72,7 @@ public class Group {
 
 	@Override
 	public String toString() {
-		return "Group [id=" + id + ", name=" + name + ", faculty=" + faculty + ", students=" + students + "]";
+		return "Groups [id=" + id + ", name=" + name + ", faculty=" + faculty + ", students=" + students + "]";
 	}
 	
 	

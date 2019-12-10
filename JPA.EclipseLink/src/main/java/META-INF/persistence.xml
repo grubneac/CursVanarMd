@@ -3,7 +3,7 @@
     <persistence-unit name="hb-database">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>entities.Student</class>
-		<class>entities.Group</class>
+		<class>entities.Groups</class>
 		<class>entities.Faculty</class>        
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->

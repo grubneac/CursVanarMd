@@ -20,13 +20,13 @@ public class Faculty {
 	private String name;
 	
 	@OneToMany(mappedBy="faculty")
-	private List<Group> groups;
+	private List<Groups> groups;
 
 	public Faculty() {
 		super();
 	}
 
-	public Faculty(Long id, @NotNull @Length(min = 2, max = 10) String name, List<Group> groups) {
+	public Faculty(Long id, @NotNull @Length(min = 2, max = 10) String name, List<Groups> groups) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,11 +49,11 @@ public class Faculty {
 		this.name = name;
 	}
 
-	public List<Group> getGroups() {
+	public List<Groups> getGroups() {
 		return groups;
 	}
 
-	public void setGroups(List<Group> groups) {
+	public void setGroups(List<Groups> groups) {
 		this.groups = groups;
 	}
 

@@ -31,8 +31,8 @@ public class Student {
 	private Float mark;
 	
 	@ManyToOne
-	@JoinColumn(name="group_id")
-	Group group;
+	@JoinColumn(name="groups_id")
+	Groups groups;
 	
 	public Student() {
 		super();
@@ -43,13 +43,13 @@ public class Student {
 
 
 	public Student(Long id, @NotNull @Length(min = 5, max = 30) String fullName, Date dob,
-			@NotNull @Min(0) @Max(10) Float mark, Group group) {
+			@NotNull @Min(0) @Max(10) Float mark, Groups groups) {
 		super();
 		Id = id;
 		this.fullName = fullName;
 		this.dob = dob;
 		this.mark = mark;
-		this.group = group;
+		this.groups = groups;
 	}
 
 
@@ -86,19 +86,19 @@ public class Student {
 	}
 	
 
-	public Group getGroup() {
-		return group;
+	public Groups getGroup() {
+		return groups;
 	}
 
 
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroup(Groups groups) {
+		this.groups = groups;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Student [Id=" + Id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", group=" + group
+		return "Student [Id=" + Id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", group=" + groups
 				+ "]";
 	}
 
