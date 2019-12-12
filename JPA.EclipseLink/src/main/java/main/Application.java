@@ -3,13 +3,15 @@ package main;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.sql.Date;
 
 import entities.Student;
 
 public class Application {
 
 	public static void main(String[] args) {
-		check();
+		//check();
+		testStudent();
 //		ArrayList<Student> students = new ArrayList<Student>();
 //		uninstall();
 //		install();// create table
@@ -37,7 +39,34 @@ public class Application {
 		em.getTransaction().commit();
 		em.close();
 	}
-	 public static void install() {
+	
+	public static void testStudent() {
+	//	Student student = new Student("First Student", new Date(1980,11,1),9.5f);//transient
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
+		var em =entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		//C
+		//em.persist(student);//save -> persistent
+		
+		//R
+		Student readStudent=em.find(Student.class, 1L);//Hydration
+//		System.out.println(readStudent);
+		
+		//U + transient/dirty
+//		readStudent.setDob(new Date(80,10,1));
+//		em.persist(readStudent);
+		
+		//D
+		em.remove(readStudent);
+		
+		
+		em.getTransaction().commit();
+		em.close();		
+	} 
+	
+	
+	public static void install() {
 	       EntityManagerFactory factory = Persistence.createEntityManagerFactory("hb-database");
 	       EntityManager em = factory.createEntityManager();
 	       

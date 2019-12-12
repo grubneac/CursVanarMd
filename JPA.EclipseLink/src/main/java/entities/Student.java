@@ -42,14 +42,12 @@ public class Student {
 
 
 
-	public Student(Long id, @NotNull @Length(min = 5, max = 30) String fullName, Date dob,
-			@NotNull @Min(0) @Max(10) Float mark, Groups groups) {
+	public Student( @NotNull @Length(min = 5, max = 30) String fullName, Date dob,
+			@NotNull @Min(0) @Max(10) Float mark) {
 		super();
-		Id = id;
 		this.fullName = fullName;
 		this.dob = dob;
 		this.mark = mark;
-		this.groups = groups;
 	}
 
 
