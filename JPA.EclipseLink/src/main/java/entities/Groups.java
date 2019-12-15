@@ -30,12 +30,10 @@ public class Groups {
 		super();
 	}
 
-	public Groups(Long id, @NotNull @Length(min = 2, max = 10) String name, Faculty faculty, List<Student> students) {
+	public Groups(@NotNull @Length(min = 2, max = 10) String name, Faculty faculty) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.faculty = faculty;
-		this.students = students;
 	}
 
 	public Long getId() {

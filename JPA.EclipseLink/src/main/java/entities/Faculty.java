@@ -26,11 +26,9 @@ public class Faculty {
 		super();
 	}
 
-	public Faculty(Long id, @NotNull @Length(min = 2, max = 10) String name, List<Groups> groups) {
+	public Faculty(@NotNull @Length(min = 2, max = 10) String name) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.groups = groups;
 	}
 
 	public Long getId() {
