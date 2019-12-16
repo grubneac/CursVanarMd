@@ -5,12 +5,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.sql.Date;
 
+import entities.Performance;
 import entities.Student;
 
 public class Application {
 
 	public static void main(String[] args) {
-		//check();
+//		check();
 		testStudent();
 //		ArrayList<Student> students = new ArrayList<Student>();
 //		uninstall();
@@ -41,24 +42,34 @@ public class Application {
 	}
 	
 	public static void testStudent() {
-	//	Student student = new Student("First Student", new Date(1980,11,1),9.5f);//transient
+		
+		Performance performance = new Performance(5.6F, 1200, 300, Performance.Behaviour.AVERAGE);
+		Student student = new Student("First Student", new Date(1980,11,1),9.5f,performance);//transient
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		//C
-		//em.persist(student);//save -> persistent
+		em.persist(student);//save -> persistent
 		
 		//R
 		Student readStudent=em.find(Student.class, 1L);//Hydration
-//		System.out.println(readStudent);
+		System.out.println("New Student="+readStudent);
 		
 		//U + transient/dirty
-//		readStudent.setDob(new Date(80,10,1));
-//		em.persist(readStudent);
+		readStudent.setDob(new Date(80,10,1));
+		readStudent.getPerformance().setBehaviour(Performance.Behaviour.EXCELLENT);
+		readStudent.getPerformance().setAverageMark(10F);
+		em.persist(readStudent);
+		Student updateStudent = em.find(Student.class, 1L);
+		System.out.println("UPDATED student="+updateStudent);
+		
 		
 		//D
 		em.remove(readStudent);
+		Student deletedStudent = em.find(Student.class,1L);
+		System.out.println("Deleted student="+deletedStudent);
+		
 		
 		
 		em.getTransaction().commit();

@@ -34,8 +34,24 @@ public class Student {
 	@JoinColumn(name="groups_id")
 	Groups groups;
 	
+	@Embedded
+	private Performance performance;
+	
 	public Student() {
 		super();
+	}
+
+
+
+
+
+	public Student(@NotNull @Length(min = 5, max = 30) String fullName, Date dob, @NotNull @Min(0) @Max(10) Float mark,
+			Performance performance) {
+		super();
+		this.fullName = fullName;
+		this.dob = dob;
+		this.mark = mark;
+		this.performance = performance;
 	}
 
 
@@ -94,11 +110,47 @@ public class Student {
 	}
 
 
+
+
+
+	public Groups getGroups() {
+		return groups;
+	}
+
+
+
+
+
+	public void setGroups(Groups groups) {
+		this.groups = groups;
+	}
+
+
+
+
+
+	public Performance getPerformance() {
+		return performance;
+	}
+
+
+
+
+
+	public void setPerformance(Performance performance) {
+		this.performance = performance;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "Student [Id=" + Id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", group=" + groups
-				+ "]";
+		return "Student [Id=" + Id + ", fullName=" + fullName + ", dob=" + dob + ", mark=" + mark + ", groups=" + groups
+				+ ", performance=" + performance + "]";
 	}
+
 
 
 	
