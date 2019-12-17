@@ -11,6 +11,7 @@ import javax.validation.constraints.*;
 
 @Entity
 @Table(name ="student")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Student {
 	
 	@Id

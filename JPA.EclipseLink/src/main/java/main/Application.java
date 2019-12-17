@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.sql.Date;
 
+import entities.MasterStudent;
 import entities.Performance;
 import entities.Student;
 
@@ -45,30 +46,32 @@ public class Application {
 		
 		Performance performance = new Performance(5.6F, 1200, 300, Performance.Behaviour.AVERAGE);
 		Student student = new Student("First Student", new Date(1980,11,1),9.5f,performance);//transient
+		MasterStudent masterStudent = new MasterStudent("Master Student", new Date(1980,11,1),9.5f,performance, MasterStudent.DegreeLevel.NOOB);
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		//C
 		em.persist(student);//save -> persistent
+		em.persist(masterStudent);//save -> persistent
 		
 		//R
-		Student readStudent=em.find(Student.class, 1L);//Hydration
-		System.out.println("New Student="+readStudent);
-		
-		//U + transient/dirty
-		readStudent.setDob(new Date(80,10,1));
-		readStudent.getPerformance().setBehaviour(Performance.Behaviour.EXCELLENT);
-		readStudent.getPerformance().setAverageMark(10F);
-		em.persist(readStudent);
-		Student updateStudent = em.find(Student.class, 1L);
-		System.out.println("UPDATED student="+updateStudent);
-		
-		
-		//D
-		em.remove(readStudent);
-		Student deletedStudent = em.find(Student.class,1L);
-		System.out.println("Deleted student="+deletedStudent);
+//		Student readStudent=em.find(Student.class, 1L);//Hydration
+//		System.out.println("New Student="+readStudent);
+//		
+//		//U + transient/dirty
+//		readStudent.setDob(new Date(80,10,1));
+//		readStudent.getPerformance().setBehaviour(Performance.Behaviour.EXCELLENT);
+//		readStudent.getPerformance().setAverageMark(10F);
+//		em.persist(readStudent);
+//		Student updateStudent = em.find(Student.class, 1L);
+//		System.out.println("UPDATED student="+updateStudent);
+//		
+//		
+//		//D
+//		em.remove(readStudent);
+//		Student deletedStudent = em.find(Student.class,1L);
+//		System.out.println("Deleted student="+deletedStudent);
 		
 		
 		
