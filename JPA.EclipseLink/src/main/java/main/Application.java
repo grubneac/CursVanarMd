@@ -7,6 +7,7 @@ import java.sql.Date;
 
 import entities.MasterStudent;
 import entities.Performance;
+import entities.PhDStudent;
 import entities.Student;
 
 public class Application {
@@ -46,7 +47,8 @@ public class Application {
 		
 		Performance performance = new Performance(5.6F, 1200, 300, Performance.Behaviour.AVERAGE);
 		Student student = new Student("First Student", new Date(1980,11,1),9.5f,performance);//transient
-		MasterStudent masterStudent = new MasterStudent("Master Student", new Date(1980,11,1),9.5f,performance, MasterStudent.DegreeLevel.NOOB);
+		MasterStudent masterStudent = new MasterStudent("Master Student", new Date(80,9,16),9.9f,performance, MasterStudent.DegreeLevel.NOOB);
+		PhDStudent dStudent = new PhDStudent("PhD Student",  new Date(1982,10,12), 3.3F, performance, MasterStudent.DegreeLevel.ADVANCED, "Institution GOOD");
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
@@ -54,6 +56,7 @@ public class Application {
 		//C
 		em.persist(student);//save -> persistent
 		em.persist(masterStudent);//save -> persistent
+		em.persist(dStudent);//save -> persistent
 		
 		//R
 //		Student readStudent=em.find(Student.class, 1L);//Hydration
