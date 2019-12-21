@@ -10,9 +10,9 @@ import javax.validation.constraints.*;
 
 
 @Entity
-@Table(name ="student_single")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Student {
+@Table(name ="student_Join")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Student2 {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -38,7 +38,7 @@ public class Student {
 	@Embedded
 	private Performance performance;
 	
-	public Student() {
+	public Student2() {
 		super();
 	}
 
@@ -46,7 +46,7 @@ public class Student {
 
 
 
-	public Student(@NotNull @Length(min = 5, max = 30) String fullName, Date dob, @NotNull @Min(0) @Max(10) Float mark,
+	public Student2(@NotNull @Length(min = 5, max = 30) String fullName, Date dob, @NotNull @Min(0) @Max(10) Float mark,
 			Performance performance) {
 		super();
 		this.fullName = fullName;
@@ -59,7 +59,7 @@ public class Student {
 
 
 
-	public Student( @NotNull @Length(min = 5, max = 30) String fullName, Date dob,
+	public Student2( @NotNull @Length(min = 5, max = 30) String fullName, Date dob,
 			@NotNull @Min(0) @Max(10) Float mark) {
 		super();
 		this.fullName = fullName;
