@@ -3,8 +3,11 @@ package main;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+
 import java.sql.Date;
 
+import entities.Groups;
 import entities.MasterStudent;
 import entities.Performance;
 import entities.PhDStudent;
@@ -45,22 +48,33 @@ public class Application {
 	
 	public static void testStudent() {
 		
-		Performance performance = new Performance(5.6F, 1200, 300, Performance.Behaviour.AVERAGE);
-		Student student = new Student("First Student", new Date(1980,11,1),9.5f,performance);//transient
-		MasterStudent masterStudent = new MasterStudent("Master Student", new Date(80,9,16),9.9f,performance, MasterStudent.DegreeLevel.NOOB);
-		PhDStudent dStudent = new PhDStudent("PhD Student",  new Date(1982,10,12), 3.3F, performance, MasterStudent.DegreeLevel.ADVANCED, "Institution GOOD");
+//		Performance performance = new Performance(5.6F, 1200, 300, Performance.Behaviour.AVERAGE);
+//		Student student = new Student("First Student", new Date(1980,11,1),9.5f,performance);//transient
+//		MasterStudent masterStudent = new MasterStudent("Master Student", new Date(80,9,16),9.9f,performance, MasterStudent.DegreeLevel.NOOB);
+//		PhDStudent dStudent = new PhDStudent("PhD Student",  new Date(1982,10,12), 3.3F, performance, MasterStudent.DegreeLevel.ADVANCED, "Institution GOOD");
+//		Groups groups = new Groups();
+//		groups.setName("Test Groups");
+		
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
 		em.getTransaction().begin();
 		//C
-		em.persist(student);//save -> persistent
-		em.persist(masterStudent);//save -> persistent
-		em.persist(dStudent);//save -> persistent
+
+//		groups.getStudents().add(student);
+//		em.persist(groups);
+//		
+//		student.setGroups(groups);
+//		em.persist(student);//save -> persistent
+////		em.persist(masterStudent);//save -> persistent
+//		em.persist(dStudent);//save -> persistent
 		
 		//R
-//		Student readStudent=em.find(Student.class, 1L);//Hydration
-//		System.out.println("New Student="+readStudent);
+//		Student readStudent=em.find(Student.class, 2L);//Hydration
+//		System.out.println("New Student="+readStudent.getFullName());
+		Groups readGroups=em.find(Groups.class, 1L);//Hydration
+		System.out.println("New Groups="+readGroups.getName());
+		System.out.println("Students:"+ readGroups.getStudents().get(0).getFullName());
 //		
 //		//U + transient/dirty
 //		readStudent.setDob(new Date(80,10,1));

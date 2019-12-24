@@ -31,7 +31,7 @@ public class Student {
 	@Max(10)
 	private Float mark;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="groups_id")
 	Groups groups;
 	
@@ -99,21 +99,6 @@ public class Student {
 	public void setMark(Float mark) {
 		this.mark = mark;
 	}
-	
-
-	public Groups getGroup() {
-		return groups;
-	}
-
-
-	public void setGroup(Groups groups) {
-		this.groups = groups;
-	}
-
-
-
-
-
 	public Groups getGroups() {
 		return groups;
 	}

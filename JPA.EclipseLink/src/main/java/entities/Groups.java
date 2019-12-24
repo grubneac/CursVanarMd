@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -23,8 +26,9 @@ public class Groups {
 	@JoinColumn(name="faculty_id")
 	private Faculty faculty; 
 	
-	@OneToMany(mappedBy="groups")
-	private List<Student> students;
+	@OneToMany(mappedBy="groups" )
+//	@Fetch(FetchMode.SELECT)
+	private List<Student> students = new ArrayList<>();
 
 	public Groups() {
 		super();
@@ -70,7 +74,7 @@ public class Groups {
 
 	@Override
 	public String toString() {
-		return "Groups [id=" + id + ", name=" + name + ", faculty=" + faculty + ", students=" + students + "]";
+		return "Groups [id=" + id + ", name=" + name + ", faculty=" + faculty +  "]"; //", students=" + students +
 	}
 	
 	
