@@ -78,5 +78,8 @@ public class Groups {
 		return "Groups [id=" + id + ", name=" + name + ", faculty=" + faculty +  "]"; //", students=" + students +
 	}
 	
+	public void addStudent(Student student) {
+		this.getStudents().add(student);
+	}
 	
 }

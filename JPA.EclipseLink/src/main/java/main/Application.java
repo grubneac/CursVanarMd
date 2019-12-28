@@ -61,9 +61,12 @@ public class Application {
 		em.getTransaction().begin();
 		//C
 
-		groups.getStudents().add(student);
-		groups.getStudents().add(masterStudent);
-		groups.getStudents().add(dStudent);
+		groups.addStudent(student);
+		student.setGroups(groups);
+		groups.addStudent(masterStudent);
+		masterStudent.setGroups(groups);
+		groups.addStudent(dStudent);
+		dStudent.setGroups(groups);
 		em.persist(groups);
 //		
 //		student.setGroups(groups);
