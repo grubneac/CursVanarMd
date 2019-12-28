@@ -13,6 +13,7 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 @Table(name ="groups")
 public class Groups {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
@@ -26,7 +27,7 @@ public class Groups {
 	@JoinColumn(name="faculty_id")
 	private Faculty faculty; 
 	
-	@OneToMany(mappedBy="groups" )
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="groups" )
 //	@Fetch(FetchMode.SELECT)
 	private List<Student> students = new ArrayList<>();
 
