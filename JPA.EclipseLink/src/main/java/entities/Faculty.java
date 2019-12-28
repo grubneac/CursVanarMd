@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name ="faculty")
-public class Faculty {
+public class Faculty  implements AwardObject {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
@@ -19,8 +20,8 @@ public class Faculty {
 	@Length(min=2, max=10)
 	private String name;
 	
-	@OneToMany(mappedBy="faculty")
-	private List<Groups> groups;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="faculty")
+	private List<Groups> groups = new ArrayList<>();
 
 	public Faculty() {
 		super();

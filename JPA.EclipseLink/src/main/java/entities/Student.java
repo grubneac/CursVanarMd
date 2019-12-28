@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 @Entity
 @Table(name ="student_single")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Student {
+public class Student implements AwardObject {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

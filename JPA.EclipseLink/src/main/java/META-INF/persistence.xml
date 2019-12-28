@@ -11,6 +11,7 @@
 		<class>entities.MasterStudent2</class> 
 		<class>entities.PhDStudent</class> 
 		<class>entities.PhDStudent2</class> 
+		<class>entities.Award</class> 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/university_app" /> <!-- BD Mane -->

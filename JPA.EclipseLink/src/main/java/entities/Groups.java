@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name ="groups")
-public class Groups {
+public class Groups  implements AwardObject {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

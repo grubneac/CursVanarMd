@@ -7,11 +7,14 @@ import javax.persistence.Persistence;
 
 import java.sql.Date;
 
+import entities.Award;
+import entities.Faculty;
 import entities.Groups;
 import entities.MasterStudent;
 import entities.Performance;
 import entities.PhDStudent;
 import entities.Student;
+import entities.Type;
 
 public class Application {
 
@@ -55,6 +58,9 @@ public class Application {
 		Groups groups = new Groups();
 		groups.setName("Test Groups");
 		
+		Faculty faculty = new Faculty();
+		faculty.setName("Test Faculty");
+		
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
 		var em =entityManagerFactory.createEntityManager();
@@ -67,7 +73,36 @@ public class Application {
 		masterStudent.setGroups(groups);
 		groups.addStudent(dStudent);
 		dStudent.setGroups(groups);
+
+		faculty.getGroups().add(groups);
+		groups.setFaculty(faculty);
+
+		em.persist(faculty);
 		em.persist(groups);
+		
+
+		Award awardSt = new Award();
+		awardSt.setTitle("Медаль за успешные результаты!");
+		awardSt.setDate(new Date(1991, 10, 5));
+		awardSt.setType(Type.MEDAL);
+		awardSt.setAwardObject(student);
+		em.persist(awardSt);
+		
+		Award awardGr = new Award();
+		awardGr.setTitle("Трофей за топовый результаты!");
+		awardGr.setDate(new Date(1991, 10, 5));
+		awardGr.setType(Type.TROPHY);
+		awardGr.setAwardObject(groups);
+		em.persist(awardGr);
+
+		Award awardFc = new Award();
+		awardFc.setTitle("Диплом за самый высокий процентаж трудоустройства!");
+		awardFc.setDate(new Date(1991, 10, 5));
+		awardFc.setType(Type.DIMPLOMA);
+		awardFc.setAwardObject(faculty);
+		em.persist(awardFc);
+		
+		
 //		
 //		student.setGroups(groups);
 //		em.persist(student);//save -> persistent
