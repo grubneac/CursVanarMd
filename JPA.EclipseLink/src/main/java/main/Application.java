@@ -18,9 +18,10 @@ import entities.Type;
 
 public class Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 //		check();
-		testStudent();
+//		testStudent();
+		testEvents();
 //		ArrayList<Student> students = new ArrayList<Student>();
 //		uninstall();
 //		install();// create table
@@ -48,6 +49,29 @@ public class Application {
 		em.getTransaction().commit();
 		em.close();
 	}
+	public static void testEvents() throws InterruptedException {
+		
+		Performance performance = new Performance(5.6F, 1200, 300, Performance.Behaviour.AVERAGE);
+		Student student = new Student("First Student", new Date(80,11,1),9.5f,performance);//transient
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hb-database");
+		var em =entityManagerFactory.createEntityManager();
+		
+		em.getTransaction().begin();
+		em.persist(student);
+		em.getTransaction().commit();
+
+		
+		//R
+		Thread.sleep(3000);
+		em.getTransaction().begin();
+		Student readStudent=em.find(Student.class, 1L);//Hydration	
+		readStudent.setFullName("Changed student");
+		em.persist(readStudent);
+		System.out.println(readStudent);
+		
+		em.getTransaction().commit();
+		em.close();
+	}	
 	
 	public static void testStudent() {
 		
